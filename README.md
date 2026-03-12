@@ -19,7 +19,7 @@ Templates are auto-generated from the [upstream operator manifest](https://raw.g
 Add the Helm repository and install the chart:
 
 ```bash
-helm repo add kubero https://kubero-dev.github.io/kubero-helm
+helm repo add kubero https://general-intelligence-systems.github.io/kubero-helm
 helm repo update
 helm install kubero kubero/kubero
 ```
