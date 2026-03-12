@@ -25,4 +25,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: update operator templates from upstream"
-          file_pattern: "charts/kubero/templates/**/*.yaml"
+          file_pattern: "charts/kubero/templates/*.yaml charts/kubero/templates/**/*.yaml"
