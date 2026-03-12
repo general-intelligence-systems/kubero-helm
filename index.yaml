@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  kubero:
+  - apiVersion: v2
+    appVersion: 0.0.0
+    created: "2026-03-12T08:10:05.76293581Z"
+    description: A Helm chart to deploy a Kubero instance (Operator and UI)
+    digest: bacd517aef994b54335f58572d5420397e47a32f79b173333e035ec337400164
+    name: kubero
+    type: application
+    urls:
+    - https://github.com/general-intelligence-systems/kubero-helm/releases/download/kubero-0.1.0/kubero-0.1.0.tgz
+    version: 0.1.0
+generated: "2026-03-12T08:10:05.762947883Z"
