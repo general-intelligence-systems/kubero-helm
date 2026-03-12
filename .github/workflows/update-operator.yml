@@ -1,0 +1,28 @@
+name: Update Operator Templates
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-templates:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+
+      - name: Download and split operator manifest
+        run: bin/manifest-to-templates
+
+      - name: Commit updated templates
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update operator templates from upstream"
+          file_pattern: "charts/kubero/templates/**/*.yaml"

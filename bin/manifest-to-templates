@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "open-uri"
+require "yaml"
+require "fileutils"
+
+url = "https://raw.githubusercontent.com/kubero-dev/kubero-operator/main/deploy/operator.yaml"
+dir = File.expand_path("../charts/kubero/templates", __dir__)
+crds_dir = "#{dir}/crds"
+
+FileUtils.mkdir_p(crds_dir)
+
+Dir.glob("#{dir}/**/*.yaml").each { |f| File.delete(f) }
+
+YAML.load_stream(URI.open(url).read).each do |doc|
+  if doc
+    kind = doc["kind"].downcase
+    name = doc.dig("metadata", "name").gsub(".", "-")
+
+    if kind == "customresourcedefinition"
+      target = crds_dir
+    else
+      target = dir
+    end
+
+    File.write("#{target}/#{kind}-#{name}.yaml", YAML.dump(doc))
+  end
+end
